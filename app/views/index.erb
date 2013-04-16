@@ -1,0 +1,39 @@
+<div class="message">
+<img src="cookie_monster.gif"></img>
+</div>
+
+<div class="container">
+  <h1>Welcome to Single User Twitter!</h1>
+  <form action='/tweet' method='post'>
+    <input type="text" name="tweet" placeholder="Tweet here" maxlength="144">
+    <input type="submit" value="submit">
+  </form>
+</div>
+
+
+<script>
+  $(document).ready(function(){
+
+    $('form').on("submit",function(e){
+      e.preventDefault();
+      $('.message').show();
+     
+     var request = $.ajax({
+          url: '/tweet',
+          method:'post',
+          data: $('form').serialize()
+          });
+
+
+     request.done(function(response){
+          $('.message').hide();
+          $('form').append('<p>Message: '+response+', was added successfully</p>')
+        });
+
+     request.fail(function(jqXHR, response){
+        $('.message').hide();
+          $('form').append('<p>'+response+'</p>')
+     });
+    });
+  });
+</script>
