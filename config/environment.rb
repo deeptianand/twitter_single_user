@@ -8,7 +8,7 @@ require 'bundler/setup' if File.exists?(ENV['BUNDLE_GEMFILE'])
 
 # Require gems we care about
 require 'rubygems'
-
+require 'oauth'
 require 'uri'
 require 'pathname'
 
@@ -37,6 +37,4 @@ require APP_ROOT.join('config', 'database')
 Twitter.configure do |config|
   config.consumer_key = YOUR_CONSUMER_KEY
   config.consumer_secret = YOUR_CONSUMER_SECRET
-  config.oauth_token = YOUR_OAUTH_TOKEN
-  config.oauth_token_secret = YOUR_OAUTH_TOKEN_SECRET
 end
